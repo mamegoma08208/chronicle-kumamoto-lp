@@ -42,6 +42,8 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
+.desktop-sidebar { display: none; }
+
 /* ─── HEADER ─── */
 .header {
   position: fixed;
@@ -90,7 +92,7 @@ a { color: inherit; text-decoration: none; }
 .hero-img img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: 66% 18%;
   opacity: .55;
 }
 .hero-img-fallback {
@@ -1043,8 +1045,7 @@ textarea { min-height: 90px; resize: vertical; }
   gap: 10px;
   transition: opacity .2s ease, transform .2s ease;
 }
-body.is-hero-top .sticky-cta,
-body.is-footer-overlap .sticky-cta {
+body.is-hero-top .sticky-cta {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-50%) translateY(12px);
@@ -1067,6 +1068,10 @@ body.is-footer-overlap .sticky-cta {
   color: var(--blue);
   border: 2px solid var(--blue);
 }
+.mobile-cta-spacer {
+  height: var(--sticky-cta-height, 88px);
+  background: var(--dark);
+}
 
 /* ─── FOOTER ─── */
 footer {
@@ -1084,9 +1089,139 @@ footer {
   transition: opacity .5s ease, transform .5s ease;
 }
 .fade-up.visible { opacity: 1; transform: none; }
+
+/* ─── TABLET LAYOUT (481px-767px) ─── */
+@media (min-width: 481px) and (max-width: 767px) {
+  body {
+    max-width: none;
+    margin: 0;
+  }
+  .header {
+    left: 0;
+    transform: none;
+    max-width: none;
+  }
+}
+
+/* ─── DESKTOP LAYOUT (>=768px) ─── */
+@media (min-width: 768px) {
+  body {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+  body > *:not(.desktop-sidebar) {
+    width: 50vw;
+    max-width: none;
+    margin-left: 50vw;
+    margin-right: 0;
+  }
+  .header {
+    display: none;
+  }
+  .desktop-sidebar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50vw;
+    z-index: 120;
+    background-color: #ffffff !important;
+    background-image: url('https://chronicle-japan.jp/lp-kumamoto/images/bg.jpg') !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-right: 1px solid var(--border);
+    color: var(--dark);
+    padding: 36px 28px;
+    flex-direction: column;
+    gap: 22px;
+    overflow: auto;
+  }
+  .desktop-sidebar-logo {
+    display: block;
+    width: 180px;
+    max-width: 100%;
+  }
+  .desktop-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .desktop-sidebar-nav a {
+    display: block;
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .desktop-sidebar-cta-wrap {
+    margin-top: 6px;
+    display: flex;
+    gap: 10px;
+  }
+  .desktop-sidebar-cta-wrap a {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .desktop-sidebar-cta-wrap .btn-main {
+    background: var(--blue);
+    color: var(--white);
+  }
+  .desktop-sidebar-cta-wrap .btn-tel {
+    background: var(--white);
+    color: var(--blue);
+    border: 2px solid var(--blue);
+  }
+  .desktop-sidebar-brand {
+    margin-top: auto;
+    font-size: 12px;
+    color: var(--gray-light);
+    line-height: 1.7;
+  }
+  .sticky-cta {
+    display: none;
+  }
+  .mobile-cta-spacer {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
+
+<aside class="desktop-sidebar">
+  <a href="#">
+    <img class="desktop-sidebar-logo"
+         src="https://chronicle-japan.jp/lp-kumamoto/images/logo.svg"
+         alt="CHRONICLE JAPAN"
+         onerror="this.outerHTML='<span style=font-size:18px;font-weight:900;letter-spacing:.08em;color:var(--dark)>CHRONICLE JAPAN</span>'">
+  </a>
+  <nav class="desktop-sidebar-nav">
+    <a href="#features">一般的なパーソナルジムと料金を比べると</a>
+    <a href="#price">料金プラン</a>
+    <a href="#flow">初回無料体験の流れ</a>
+    <a href="#voice">お客様の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#access">アクセス</a>
+    <a href="#contact">無料体験・見学申し込み</a>
+  </nav>
+  <div class="desktop-sidebar-cta-wrap">
+    <a href="#contact" class="btn-main">無料体験はこちら</a>
+    <a href="tel:0926000242" class="btn-tel">電話する</a>
+  </div>
+  <p class="desktop-sidebar-brand">CHRONICLE JAPAN<br>熊本店</p>
+</aside>
 
 <!-- HEADER -->
 <header class="header">
@@ -1103,7 +1238,7 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-img">
-    <img src="https://chronicle-japan.jp/lp-kumamoto/images/features-img1.jpg" alt="クロニクルジャパン トレーニング風景" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'hero-img-fallback'}))">
+    <img src="https://chronicle-japan.jp/lp-kumamoto/images/about-bg.jpg" alt="クロニクルジャパン トレーニング風景" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'hero-img-fallback'}))">
   </div>
   <div class="hero-overlay"></div>
 
@@ -1620,6 +1755,8 @@ footer {
   <p style="margin-top:4px;">© 2025 CHRONICLE JAPAN.</p>
 </footer>
 
+<div class="mobile-cta-spacer" aria-hidden="true"></div>
+
 <!-- STICKY CTA -->
 <div class="sticky-cta">
   <a href="#contact" class="btn-main">無料体験はこちら</a>
@@ -1644,6 +1781,11 @@ const footerEl = document.querySelector('footer');
 let isHeroTopPinned = false;
 const syncTopHeroState = () => {
   if (!headerEl || !heroEl) return;
+  if (window.innerWidth >= 768) {
+    isHeroTopPinned = false;
+    document.body.classList.remove('is-hero-top');
+    return;
+  }
 
   const headerBottom = headerEl.getBoundingClientRect().bottom;
   const heroTop = heroEl.getBoundingClientRect().top;
@@ -1652,7 +1794,7 @@ const syncTopHeroState = () => {
   const enterTopState = scrollY <= 1 && isHeroUnderHeader;
   const keepTopState = scrollY <= 8 && isHeroUnderHeader;
 
-  // 境界付近でのチラつき防止（トップ状態の入退場にゆとりを持たせる）
+  // 境界付近でのチラつき防止
   isHeroTopPinned = isHeroTopPinned ? keepTopState : enterTopState;
   document.body.classList.toggle('is-hero-top', isHeroTopPinned);
 };
@@ -1666,14 +1808,22 @@ const syncFooterOverlapState = () => {
   document.body.classList.toggle('is-footer-overlap', isFooterOverlap);
 };
 
+const syncStickyCtaHeight = () => {
+  if (!stickyCtaEl) return;
+  const ctaHeight = Math.ceil(stickyCtaEl.getBoundingClientRect().height);
+  document.documentElement.style.setProperty('--sticky-cta-height', `${ctaHeight}px`);
+};
+
 window.addEventListener('scroll', () => {
   syncTopHeroState();
   syncFooterOverlapState();
 }, { passive: true });
 window.addEventListener('resize', () => {
+  syncStickyCtaHeight();
   syncTopHeroState();
   syncFooterOverlapState();
 });
+syncStickyCtaHeight();
 syncTopHeroState();
 syncFooterOverlapState();
 
