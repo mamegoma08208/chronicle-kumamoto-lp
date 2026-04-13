@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>熊本市のパーソナルジム | クロニクルジャパン | 通い放題・1回2,200円〜</title>
+<meta name="description" content="熊本市のパーソナルジム、クロニクルジャパン。通い放題で1回あたり約2,200円〜。全室個室・マンツーマン指導。6ヶ月で-8〜10kgの実績多数。初回体験・入会金0円。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #2d2db8;
+  --blue-light: #4444dd;
+  --blue-pale: #eeeeff;
+  --blue-mid: #ddddfb;
+  --pink: #c0188a;
+  --pink-light: #ff44bb;
+  --pink-pale: #fff0fa;
+  --white: #ffffff;
+  --bg: #f2f2f6;
+  --dark: #111111;
+  --gray: #666666;
+  --gray-light: #999999;
+  --border: #e0e0e8;
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  max-width: 480px;
+  margin: 0 auto;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── HEADER ─── */
+.header {
+  position: fixed;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#site-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+.header-cta {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding-top: 58px;
+  background: var(--dark);
+  position: relative;
+  min-height: calc(100svh - 58px);
+  display: flex;
+  flex-direction: column;
+}
+.hero-img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: .55;
+}
+.hero-img-fallback {
+  width: 100%; height: 100%;
+  background: linear-gradient(160deg, #1a1a4a 0%, #2d2d8a 50%, #1a1a3a 100%);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15) 0%,
+    rgba(0,0,0,.1) 30%,
+    rgba(0,0,0,.55) 65%,
+    rgba(0,0,0,.85) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 20px 28px;
+}
+.hero-label {
+  font-size: 11px;
+  letter-spacing: .22em;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.hero-main-copy {
+  font-size: clamp(28px, 8vw, 36px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 6px;
+  letter-spacing: -.01em;
+}
+.hero-main-copy em {
+  font-style: normal;
+  color: #7be0ff;
+}
+.hero-sub-copy {
+  font-size: 13px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.hero-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+.hero-badge-free {
+  background: rgba(255,255,255,.15);
+  border: 1.5px solid rgba(255,255,255,.5);
+  color: var(--white);
+  backdrop-filter: blur(4px);
+}
+.hero-badge-free .badge-price {
+  font-size: 16px;
+  font-weight: 900;
+  color: #7be0ff;
+}
+.hero-price-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  width: fit-content;
+}
+.hero-price-chip-label {
+  font-size: 11px;
+  color: var(--gray);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.hero-price-chip-num {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.hero-price-chip-unit {
+  font-size: 12px;
+  color: var(--gray);
+}
+.hero-cta {
+  display: block;
+  width: 100%;
+  padding: 17px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  letter-spacing: .02em;
+  margin-bottom: 10px;
+}
+.hero-cta-note {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,.5);
+}
+.hero-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+}
+
+/* ─── CAMPAIGN ─── */
+.campaign {
+  background: var(--pink);
+  padding: 14px 20px;
+  color: var(--white);
+}
+.campaign-title {
+  font-size: 15px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: .05em;
+}
+.campaign-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.campaign-item {
+  background: rgba(255,255,255,.15);
+  border-radius: var(--radius);
+  padding: 12px;
+  text-align: center;
+}
+.campaign-num {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: .8;
+  margin-bottom: 4px;
+  letter-spacing: .1em;
+}
+.campaign-label {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.campaign-price-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+}
+.campaign-price-old {
+  font-size: 10px;
+  opacity: .7;
+  text-decoration: line-through;
+}
+.campaign-price-new {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+}
+.campaign-price-yen { font-size: 14px; font-weight: 700; }
+
+/* ─── SECTION COMMON ─── */
+.sec { padding: 48px 20px; }
+.sec-bg { background: var(--bg); }
+.sec-blue { background: var(--blue); color: var(--white); }
+.sec-eyebrow {
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--pink);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.sec-blue .sec-eyebrow { color: rgba(255,255,255,.6); }
+.sec-title {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.35;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+.sec-blue .sec-title { color: var(--white); }
+.sec-desc {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.sec-blue .sec-desc { color: rgba(255,255,255,.7); }
+.sec-cta {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--radius-pill);
+  margin-top: 24px;
+}
+.sec-cta-outline {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--blue);
+  margin-top: 12px;
+}
+
+/* ─── COMPARE ─── */
+.compare-intro {
+  background: var(--blue-pale);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--blue);
+}
+.compare-intro p {
+  font-size: 13px;
+  color: var(--blue);
+  font-weight: 700;
+  line-height: 1.6;
+}
+.compare-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.ccard {
+  border-radius: var(--radius);
+  padding: 16px 12px;
+  text-align: center;
+}
+.ccard-bad {
+  background: #fff5f5;
+  border: 1px solid #ffcccc;
+}
+.ccard-good {
+  background: var(--blue-pale);
+  border: 2px solid var(--blue);
+}
+.ccard-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.ccard-bad .ccard-label { color: #cc3333; }
+.ccard-good .ccard-label { color: var(--blue); }
+.ccard-price {
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.ccard-bad .ccard-price { color: #cc3333; }
+.ccard-good .ccard-price { color: var(--blue); }
+.ccard-unit { font-size: 10px; color: var(--gray-light); }
+.ccard-sub { font-size: 11px; margin-top: 8px; color: var(--gray); line-height: 1.4; }
+.ccard-good .ccard-sub { color: var(--blue); }
+.compare-note {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  text-align: center;
+}
+.compare-note strong { color: var(--blue); font-weight: 700; }
+
+/* ─── FEATURES ─── */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.feature-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.feature-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #d0d0e8;
+  overflow: hidden;
+}
+.feature-img img { width: 100%; height: 100%; object-fit: cover; }
+.feature-body { padding: 16px; }
+.feature-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--pink);
+  letter-spacing: .15em;
+  margin-bottom: 6px;
+}
+.feature-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.feature-desc {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+.feature-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: var(--blue-pale);
+  color: var(--blue);
+  border-radius: var(--radius-sm);
+  margin-top: 10px;
+}
+
+/* ─── RECOMMEND ─── */
+.recommend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.recommend-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 14px;
+  border: 1px solid var(--border);
+}
+.recommend-icon {
+  width: 44px; height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.recommend-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.4;
+}
+
+/* ─── STATS ─── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+.stat-card {
+  background: rgba(255,255,255,.12);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label { font-size: 11px; color: rgba(255,255,255,.7); line-height: 1.5; }
+
+/* ─── TRAINER ─── */
+.trainer-card {
+  background: rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,.15);
+  margin-top: 16px;
+}
+.trainer-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.trainer-avatar {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: 2px solid rgba(255,255,255,.4);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.trainer-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.trainer-name { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+.trainer-role { font-size: 12px; color: rgba(255,255,255,.6); }
+.trainer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.trainer-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,.85);
+  line-height: 1.5;
+}
+.check-circle {
+  width: 18px; height: 18px;
+  min-width: 18px;
+  border-radius: 50%;
+  background: var(--pink);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+  font-size: 10px;
+  color: white;
+  font-weight: 700;
+}
+
+/* ─── VOICE ─── */
+.voice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+.voice-card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--white);
+  overflow: hidden;
+}
+.voice-img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  background: #d8d8ec;
+  overflow: hidden;
+}
+.voice-img img { width: 100%; height: 100%; object-fit: cover; }
+.voice-body { padding: 16px; }
+.voice-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.voice-badge {
+  font-size: 11px;
+  color: var(--pink);
+  font-weight: 700;
+  background: var(--pink-pale);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+}
+.voice-name { font-size: 13px; color: var(--gray); }
+.voice-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.voice-text { font-size: 13px; color: var(--gray); line-height: 1.7; }
+.voice-placeholder {
+  background: #fff9f0;
+  border: 1px dashed #d4a843;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  color: #a07828;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ─── STAFF ─── */
+.staff-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.staff-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.staff-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  border: 2px solid var(--blue);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.staff-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.staff-store { font-size: 11px; color: var(--pink); font-weight: 700; letter-spacing: .08em; margin-bottom: 3px; }
+.staff-name { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+.staff-name-en { font-size: 11px; color: var(--gray-light); letter-spacing: .12em; }
+.staff-tenure { font-size: 12px; color: var(--gray); margin-bottom: 12px; }
+.staff-results {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.staff-results li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--dark);
+  line-height: 1.5;
+}
+.staff-results li::before {
+  content: '';
+  width: 6px; height: 6px;
+  min-width: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin-top: 7px;
+}
+.staff-comment {
+  margin-top: 14px;
+  padding: 12px;
+  background: var(--blue-pale);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--blue);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* ─── FAQ ─── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.faq-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.faq-q-mark {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--blue);
+  flex-shrink: 0;
+  min-width: 16px;
+}
+.faq-a {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  padding-left: 26px;
+}
+
+/* ─── PRICE ─── */
+.plan-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+}
+.plan-card {
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+.plan-card.featured {
+  border: 2px solid var(--blue);
+  background: var(--blue-pale);
+}
+.plan-recommend-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  letter-spacing: .05em;
+}
+.plan-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
+.plan-price {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.plan-price span { font-size: 14px; font-weight: 400; color: var(--gray); margin-left: 4px; }
+.plan-unit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a6e38;
+  background: #d8f0e4;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  margin: 10px 0;
+}
+.plan-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 12px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.plan-list li {
+  font-size: 13px;
+  color: var(--dark);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+.plan-list li::before {
+  content: '';
+  width: 16px; height: 16px;
+  min-width: 16px;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  border: 1.5px solid var(--blue);
+  display: block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%232d2db8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 2px;
+}
+.plan-notes { font-size: 11px; color: var(--gray-light); margin-top: 10px; line-height: 1.8; }
+
+/* ─── FLOW ─── */
+.flow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 24px;
+  position: relative;
+}
+.flow-list::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 20px; bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue) 0%, var(--blue-mid) 100%);
+}
+.flow-item {
+  display: flex;
+  gap: 18px;
+  padding: 0 0 24px;
+  position: relative;
+}
+.flow-item:last-child { padding-bottom: 0; }
+.flow-step {
+  width: 40px; height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.flow-body { padding-top: 8px; }
+.flow-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.flow-desc { font-size: 13px; color: var(--gray); line-height: 1.7; }
+.flow-time {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-pale);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+
+/* ─── FACILITY ─── */
+.facility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+.facility-item {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.facility-img {
+  aspect-ratio: 4/3;
+  background: #c8c8e0;
+  overflow: hidden;
+}
+.facility-img img { width: 100%; height: 100%; object-fit: cover; }
+.facility-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  padding: 8px 10px;
+  background: var(--white);
+}
+
+/* ─── ACCESS ─── */
+.access-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+}
+.access-row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.access-icon-wrap {
+  width: 36px; height: 36px;
+  min-width: 36px;
+  background: var(--blue-pale);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.access-label { font-size: 11px; color: var(--pink); font-weight: 700; letter-spacing: .08em; margin-bottom: 2px; }
+.access-val { font-size: 14px; color: var(--dark); font-weight: 500; line-height: 1.5; }
+.access-note { font-size: 12px; color: var(--gray-light); margin-top: 2px; }
+.map-area {
+  margin-top: 20px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--gray-light);
+  font-size: 13px;
+}
+
+/* ─── CONTACT FORM ─── */
+.form-wrap {
+  padding: 48px 20px 100px;
+  background: var(--bg);
+}
+.form-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.form-sub {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.form-tel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: var(--white);
+  border: 2px solid var(--blue);
+  border-radius: var(--radius-pill);
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--blue);
+  margin-bottom: 20px;
+  letter-spacing: .05em;
+}
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: var(--gray-light);
+  font-size: 12px;
+}
+.form-divider::before, .form-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.form-group { margin-bottom: 14px; }
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+.req {
+  font-size: 10px;
+  color: var(--pink);
+  margin-left: 4px;
+  font-weight: 700;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  background: var(--white);
+  color: var(--dark);
+  -webkit-appearance: none;
+  transition: border-color .2s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(45,45,184,.1);
+}
+textarea { min-height: 90px; resize: vertical; }
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+  margin-top: 8px;
+  letter-spacing: .03em;
+}
+.form-note {
+  font-size: 11px;
+  color: var(--gray-light);
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.8;
+}
+
+/* ─── MID CTA ─── */
+.mid-cta {
+  background: var(--blue);
+  padding: 36px 20px;
+  text-align: center;
+}
+.mid-cta-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.mid-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--white);
+  color: var(--blue);
+  font-size: 16px;
+  font-weight: 900;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+}
+
+/* ─── STICKY CTA ─── */
+.sticky-cta {
+  position: fixed;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: rgba(255,255,255,.97);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+  display: flex;
+  gap: 10px;
+}
+.sticky-cta a {
+  flex: 1;
+  display: block;
+  text-align: center;
+  padding: 14px 10px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+}
+.sticky-cta .btn-main {
+  background: var(--blue);
+  color: var(--white);
+}
+.sticky-cta .btn-tel {
+  background: var(--white);
+  color: var(--blue);
+  border: 2px solid var(--blue);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,.4);
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+}
+
+/* ─── FADE UP ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.fade-up.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <!-- ★ロゴ差し替え：src のパスだけ変更すればOK -->
+  <a href="#">
+    <img id="site-logo"
+         src="https://chronicle-japan.jp/lp-kumamoto/images/logo.svg"
+         alt="CHRONICLE JAPAN"
+         onerror="this.outerHTML='<span style=font-size:15px;font-weight:900;color:var(--blue);letter-spacing:.08em>CHRONICLE JAPAN</span>'">
+  </a>
+  <a href="#contact" class="header-cta">無料体験はこちら</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="https://chronicle-japan.jp/lp-kumamoto/images/features-img1.jpg" alt="クロニクルジャパン トレーニング風景" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'hero-img-fallback'}))">
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-label">Kumamoto Personal Gym</div>
+
+    <h1 class="hero-main-copy">
+      通い放題で、<br><em>1回2,200円</em>から。<br>熊本で一番コスパの高い<br>パーソナルジム。
+    </h1>
+    <p class="hero-sub-copy">全室個室・マンツーマン指導。通えば通うほど安くなる。</p>
+
+    <div class="hero-badges">
+      <span class="hero-badge hero-badge-free">初回体験 <span class="badge-price">¥0</span></span>
+      <span class="hero-badge hero-badge-free">入会金 <span class="badge-price">¥0</span></span>
+    </div>
+
+    <div class="hero-price-chip">
+      <span class="hero-price-chip-label">1回あたり</span>
+      <span class="hero-price-chip-num">¥2,200<span style="font-size:18px">〜</span></span>
+      <span class="hero-price-chip-unit">（通い放題時）</span>
+    </div>
+
+    <a href="#contact" class="hero-cta">無料体験を申し込む（0円）</a>
+    <p class="hero-cta-note">勧誘は一切ありません。体験だけで終了も可。</p>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="sec" id="features">
+  <p class="sec-eyebrow fade-up">COST PERFORMANCE</p>
+  <h2 class="sec-title fade-up">一般的なパーソナルジムと<br>料金を比べると</h2>
+
+  <div class="compare-intro fade-up">
+    <p>パーソナルジムは月4回で3万円以上が当たり前。クロニクルは月額固定の通い放題なので、通う回数が増えるほど1回あたりの費用が下がります。</p>
+  </div>
+
+  <div class="compare-cards fade-up">
+    <div class="ccard ccard-bad">
+      <div class="ccard-label">一般的な<br>パーソナルジム</div>
+      <div class="ccard-price">¥8,000</div>
+      <div class="ccard-unit">/ 回あたり</div>
+      <div class="ccard-sub">月4回 = ¥32,000〜</div>
+    </div>
+    <div class="ccard ccard-good">
+      <div class="ccard-label">クロニクル<br>ジャパン</div>
+      <div class="ccard-price">¥2,200〜</div>
+      <div class="ccard-unit">/ 回あたり</div>
+      <div class="ccard-sub">通い放題<br>（税込）</div>
+    </div>
+  </div>
+
+  <p class="compare-note fade-up">月額は変わらない。だから、通う回数が多いほど<strong>1回あたりの料金が下がる。</strong>通い放題コースなら最安¥2,200〜で受けられます。</p>
+
+  <a href="#contact" class="sec-cta fade-up">まずは無料体験を申し込む</a>
+</section>
+
+<!-- FEATURES -->
+<section class="sec sec-bg">
+  <p class="sec-eyebrow fade-up">FEATURES</p>
+  <h2 class="sec-title fade-up">クロニクルジャパンが<br>選ばれる理由</h2>
+
+  <div class="feature-list">
+    <div class="feature-item fade-up">
+      <div class="feature-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/features-img1.jpg" alt="通い放題のパーソナル" onerror="this.parentElement.style.background='#d0d0e8'">
+      </div>
+      <div class="feature-body">
+        <div class="feature-num">FEATURE 01</div>
+        <div class="feature-title">好きな時にサクっと通える！<br>通い放題のパーソナル</div>
+        <div class="feature-desc">仕事終わりにも通いやすい。自分に合った時間に通えて、無理なく続けられます。月額そのままで通う回数を増やすほど、1回あたりのコストが下がります。</div>
+        <span class="feature-tag">1回あたり¥2,200〜</span>
+      </div>
+    </div>
+
+    <div class="feature-item fade-up">
+      <div class="feature-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/features-img2.jpg" alt="高品質なトレーニング指導" onerror="this.parentElement.style.background='#d0d0e8'">
+      </div>
+      <div class="feature-body">
+        <div class="feature-num">FEATURE 02</div>
+        <div class="feature-title">高品質なのに低価格。<br>満足度の高さを実現</div>
+        <div class="feature-desc">業界水準を上回るトレーニング環境と、専門性の高い指導を通いやすい価格でご提供しています。一般的なパーソナルジムの約半額でマンツーマン指導が受けられます。</div>
+        <span class="feature-tag">全室個室・マンツーマン</span>
+      </div>
+    </div>
+
+    <div class="feature-item fade-up">
+      <div class="feature-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/features-img3.jpg" alt="安全なトレーニング指導" onerror="this.parentElement.style.background='#d0d0e8'">
+      </div>
+      <div class="feature-body">
+        <div class="feature-num">FEATURE 03</div>
+        <div class="feature-title">安全なトレーニング指導で<br>確実に体が変わる</div>
+        <div class="feature-desc">初心者から経験者まで対応できる安全な指導体制。正しいフォームと適切な負荷で、6ヶ月で-8〜10kgの変化を出している方が多くいます。</div>
+        <span class="feature-tag">6ヶ月で-8〜10kg実績</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMEND -->
+<section class="sec">
+  <p class="sec-eyebrow fade-up">RECOMMENDATION</p>
+  <h2 class="sec-title fade-up">こんな方に<br>おすすめです</h2>
+
+  <div class="recommend-list">
+    <div class="recommend-item fade-up">
+      <div class="recommend-icon">🔄</div>
+      <div class="recommend-text">頑張ろうとやったが<br>続かなかったあなた</div>
+    </div>
+    <div class="recommend-item fade-up">
+      <div class="recommend-icon">💪</div>
+      <div class="recommend-text">自分ひとりでは<br>上手く追い込めないあなた</div>
+    </div>
+    <div class="recommend-item fade-up">
+      <div class="recommend-icon">✅</div>
+      <div class="recommend-text">正しくトレーニングを<br>したいあなた</div>
+    </div>
+    <div class="recommend-item fade-up">
+      <div class="recommend-icon">💰</div>
+      <div class="recommend-text">コスパよくパーソナルで<br>痩せたいあなた</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS & TRAINER -->
+<section class="sec sec-blue">
+  <p class="sec-eyebrow fade-up">RESULTS & TRAINER</p>
+  <h2 class="sec-title fade-up">6ヶ月で-8〜10kg。<br>トレーナーの実績。</h2>
+
+  <div class="stats-grid fade-up">
+    <div class="stat-card">
+      <div class="stat-num">-8〜10<small style="font-size:16px">kg</small></div>
+      <div class="stat-label">6ヶ月での<br>ダイエット実績</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">5<small style="font-size:16px">年</small></div>
+      <div class="stat-label">最長継続<br>会員記録</div>
+    </div>
+  </div>
+
+  <div class="trainer-card fade-up">
+    <div class="trainer-top">
+      <div class="trainer-avatar">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/角田さんv2.png" alt="角田昇太" onerror="this.parentElement.innerHTML='<div style=font-size:24px;color:rgba(255,255,255,.5)>T</div>'">
+      </div>
+      <div>
+        <div class="trainer-name">角田 昇太</div>
+        <div class="trainer-role">パーソナルトレーナー歴4年 / 熊本店</div>
+      </div>
+    </div>
+    <ul class="trainer-list">
+      <li><div class="check-circle">✓</div>サマースタイルアワード 日本2位</li>
+      <li><div class="check-circle">✓</div>SSA JAPAN PRO取得</li>
+      <li><div class="check-circle">✓</div>ストレッチ専門店での勤務経験あり</li>
+      <li><div class="check-circle">✓</div>3ヶ月で-12kg・姿勢改善の実績多数</li>
+    </ul>
+  </div>
+
+  <a href="#contact" class="mid-cta-btn" style="display:block;width:100%;padding:16px;background:var(--white);color:var(--blue);font-size:15px;font-weight:700;text-align:center;border-radius:100px;border:none;margin-top:24px;cursor:pointer;">まずは無料体験を申し込む</a>
+</section>
+
+<!-- VOICE -->
+<section class="sec sec-bg" id="voice">
+  <p class="sec-eyebrow fade-up">CUSTOMER VOICE</p>
+  <h2 class="sec-title fade-up">お客様の声</h2>
+
+  <div class="voice-list">
+    <div class="voice-card fade-up">
+      <div class="voice-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/voice-img2.jpg" alt="" onerror="this.parentElement.style.background='#d0d0e8'">
+      </div>
+      <div class="voice-body">
+        <div class="voice-meta">
+          <span class="voice-badge">20代女性</span>
+          <span class="voice-name">Mさん</span>
+        </div>
+        <div class="voice-title">カラダの外側と内側が変化しました！</div>
+        <div class="voice-text">CHRONICLE-japanに通って5年。運動が習慣化し、体の内外に変化が出ました。毎回違う内容で飽きず、ケアの大切さも学べました。子連れOKで娘も可愛がってもらえ感謝です。</div>
+      </div>
+    </div>
+
+    <div class="voice-card fade-up">
+      <div class="voice-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/voice-img1.jpg" alt="" onerror="this.parentElement.style.background='#d0d0e8'">
+      </div>
+      <div class="voice-body">
+        <div class="voice-meta">
+          <span class="voice-badge">40代女性</span>
+          <span class="voice-name">Kさん</span>
+        </div>
+        <div class="voice-title">下半身の変化に驚き！</div>
+        <div class="voice-text">ずっと悩んでいた下半身痩せに親身に向き合ってくれ、身体の仕組みも教えてもらえました。トレーナーさんが皆さん面白い方なので、楽しくトレーニングできるのも魅力です！</div>
+      </div>
+    </div>
+
+    <div class="voice-card fade-up">
+      <div class="voice-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/voice-img3.jpg" alt="" onerror="this.parentElement.style.background='#d0d0e8'">
+      </div>
+      <div class="voice-body">
+        <div class="voice-meta">
+          <span class="voice-badge">20代女性</span>
+          <span class="voice-name">Mさん</span>
+        </div>
+        <div class="voice-title">クロニクルと出会えてよかった！</div>
+        <div class="voice-text">ダイエット目的で始め、コンテストにも出場。トレーナーさんが技術・知識ともに豊富で、コンテスト当日も朝から終わりまで親身に寄り添ってくれました。</div>
+      </div>
+    </div>
+
+    <div class="voice-card fade-up">
+      <div class="voice-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/voice-img4.jpg" alt="" onerror="this.parentElement.style.background='#d0d0e8'">
+      </div>
+      <div class="voice-body">
+        <div class="voice-meta">
+          <span class="voice-badge">20代女性</span>
+          <span class="voice-name">Rさん</span>
+        </div>
+        <div class="voice-title">自分の可能性をもっと信じたい</div>
+        <div class="voice-text">その日の調子や身体に合うトレーニング・食事を的確に提案してくれます。サマースタイルアワード日本大会2024でも2年連続優勝できました！</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF -->
+<section class="sec">
+  <p class="sec-eyebrow fade-up">STAFF</p>
+  <h2 class="sec-title fade-up">スタッフ紹介</h2>
+
+  <div class="staff-card fade-up">
+    <div class="staff-top">
+      <div class="staff-avatar">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/角田さんv2.png" alt="角田昇太" onerror="this.parentElement.style.background='var(--blue-pale)'">
+      </div>
+      <div>
+        <div class="staff-store">熊本店</div>
+        <div class="staff-name">角田　昇太</div>
+        <div class="staff-name-en">SHOTA TSUNODA</div>
+      </div>
+    </div>
+    <div class="staff-tenure">パーソナルトレーナー歴4年</div>
+    <ul class="staff-results">
+      <li>大会：SSA JAPAN PRO取得</li>
+      <li>サマースタイルアワード 日本2位</li>
+      <li>ストレッチ専門店勤務経験あり</li>
+      <li>得意：姿勢改善、腰痛・肩こり予防、ダイエット、筋力アップ</li>
+      <li>成果例：3ヶ月で−12kg、反り腰・巻き肩の改善多数</li>
+    </ul>
+    <div class="staff-comment">
+      鍛える×整える！トレーニングもストレッチも、あなたの体をトータルサポートします。私と一緒に楽しく体を変えましょう！
+    </div>
+  </div>
+</section>
+
+<!-- FACILITY -->
+<section class="sec sec-bg" id="facility">
+  <p class="sec-eyebrow fade-up">FACILITY</p>
+  <h2 class="sec-title fade-up">設備紹介</h2>
+
+  <div class="facility-grid">
+    <div class="facility-item fade-up">
+      <div class="facility-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/facility-img1.jpg" alt="ミネラルウォーター" onerror="this.parentElement.style.background='#c8c8e0'">
+      </div>
+      <div class="facility-label">ミネラルウォーター</div>
+    </div>
+    <div class="facility-item fade-up">
+      <div class="facility-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/facility-img4.jpg" alt="トレーニングルーム" onerror="this.parentElement.style.background='#c8c8e0'">
+      </div>
+      <div class="facility-label">トレーニングルーム</div>
+    </div>
+    <div class="facility-item fade-up">
+      <div class="facility-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/facility-img3.jpg" alt="パーソナルストレッチ" onerror="this.parentElement.style.background='#c8c8e0'">
+      </div>
+      <div class="facility-label">パーソナルストレッチ</div>
+    </div>
+    <div class="facility-item fade-up">
+      <div class="facility-img">
+        <img src="https://chronicle-japan.jp/lp-kumamoto/images/食事指導.png" alt="食事指導" onerror="this.parentElement.style.background='#c8c8e0'">
+      </div>
+      <div class="facility-label">食事指導</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="sec" id="price">
+  <p class="sec-eyebrow fade-up">PRICE PLAN</p>
+  <h2 class="sec-title fade-up">料金プラン</h2>
+  <p class="sec-desc fade-up">入会金¥0・最低契約期間なし。まずは無料体験から。</p>
+
+  <div class="plan-grid">
+    <div class="plan-card featured fade-up">
+      <span class="plan-recommend-badge">おすすめコース</span>
+      <div class="plan-name">パーソナル通い放題 / 受け放題コース</div>
+      <div class="plan-price">¥36,300<span>/月（税込）</span></div>
+      <div class="plan-unit-pill">✓ 通い放題で1回あたり¥2,200〜</div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:8px;">トレーニング時間：9:00〜17:00は60分 / 17:00〜22:00は30分</div>
+      <ul class="plan-list">
+        <li>ウエイトトレーニング</li>
+        <li>自重トレーニング</li>
+        <li>ストレッチ・マッサージ</li>
+        <li>食事指導</li>
+        <li>有酸素運動（バイク・ボクササイズ等）</li>
+        <li>ピラティス</li>
+      </ul>
+      <p class="plan-notes">※月の途中入会は日割り計算　※ローン払い不可　※最低契約期間なし</p>
+    </div>
+
+    <div class="plan-card fade-up">
+      <div class="plan-name">週1コース（パーソナルトレーニング60分 / 月4回）</div>
+      <div class="plan-price">¥30,800<span>/月（税込）</span></div>
+      <div class="plan-unit-pill" style="background:#f0f0f4;color:var(--gray);">1回あたり約¥7,700</div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:8px;">9:00〜22:00 60分 ※月最大4回</div>
+      <ul class="plan-list">
+        <li>ウエイトトレーニング</li>
+        <li>自重トレーニング</li>
+        <li>ストレッチ・マッサージ</li>
+        <li>食事指導</li>
+        <li>有酸素運動</li>
+      </ul>
+      <p class="plan-notes">※最低契約期間なし　※ローン払い不可</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="sec sec-bg" id="flow">
+  <p class="sec-eyebrow fade-up">FIRST STEP</p>
+  <h2 class="sec-title fade-up">初回無料体験の流れ</h2>
+  <p class="sec-desc fade-up">60分で完結。当日入会の必要はありません。勧誘は一切ありません。</p>
+
+  <div class="flow-list">
+    <div class="flow-item fade-up">
+      <div class="flow-step">1</div>
+      <div class="flow-body">
+        <div class="flow-title">着替え</div>
+        <div class="flow-desc">入店後、運動しやすい格好に着替えていただきます。</div>
+      </div>
+    </div>
+    <div class="flow-item fade-up">
+      <div class="flow-step">2</div>
+      <div class="flow-body">
+        <div class="flow-title">カウンセリング</div>
+        <div class="flow-desc">目的・目標・体力レベル・生活習慣をヒアリング。あなたに合ったプランをご提案します。</div>
+        <span class="flow-time">約15分</span>
+      </div>
+    </div>
+    <div class="flow-item fade-up">
+      <div class="flow-step">3</div>
+      <div class="flow-body">
+        <div class="flow-title">体験レッスン</div>
+        <div class="flow-desc">実際にトレーナーと1対1でトレーニング。正しいフォームと効率的な動かし方を、丁寧に教えてもらえます。</div>
+        <span class="flow-time">約30〜40分</span>
+      </div>
+    </div>
+    <div class="flow-item fade-up">
+      <div class="flow-step">4</div>
+      <div class="flow-body">
+        <div class="flow-title">着替え＆プラン説明</div>
+        <div class="flow-desc">お着替え後、トレーナーがプランをご説明します。お客様のライフスタイルに合わせてお選びください。（勧誘はありません）</div>
+      </div>
+    </div>
+    <div class="flow-item fade-up">
+      <div class="flow-step">5</div>
+      <div class="flow-body">
+        <div class="flow-title">入会手続き（希望者のみ）</div>
+        <div class="flow-desc">入会を希望される場合は書類手続きを行い、専用アプリで次回レッスンを予約いただきます。</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#contact" class="sec-cta fade-up">無料体験を申し込む</a>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <p class="sec-eyebrow fade-up">FAQ</p>
+  <h2 class="sec-title fade-up">よくある質問</h2>
+
+  <div class="faq-list">
+    <div class="faq-item fade-up">
+      <div class="faq-q"><span class="faq-q-mark">Q.</span>夏までに間に合いますか？</div>
+      <p class="faq-a">今からでも十分間に合います。多くの方が3〜4ヶ月で見た目の変化を実感されています。6ヶ月で-8〜10kgの事例も多数あります。まずは体験にお越しください。</p>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q"><span class="faq-q-mark">Q.</span>続けられるか不安です。</div>
+      <p class="faq-a">通い放題なので「今月あと何回行けばもとが取れる」という感覚が自然と続ける動機になります。担当トレーナーとの関係性も、長く通い続ける方が多い理由のひとつです。</p>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q"><span class="faq-q-mark">Q.</span>本当に体は変わりますか？</div>
+      <p class="faq-a">6ヶ月で-8〜10kgの実績多数。マンツーマン指導で正しいフォームと適切な負荷をかけるため、自己流とは効果が異なります。食事指導も込みでサポートします。</p>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q"><span class="faq-q-mark">Q.</span>強引な勧誘はありますか？</div>
+      <p class="faq-a">一切ありません。体験だけで終了いただいても問題ございません。じっくりご検討ください。</p>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q"><span class="faq-q-mark">Q.</span>駐車場はありますか？</div>
+      <p class="faq-a">店舗専用駐車場はございませんが、徒歩1分以内にコインパーキングが複数ございます。お車でもお気軽にお越しください。</p>
+    </div>
+    <div class="faq-item fade-up">
+      <div class="faq-q"><span class="faq-q-mark">Q.</span>最低契約期間はありますか？</div>
+      <p class="faq-a">ございません。入会金も無料ですので、まずは体験からお気軽にお試しください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="sec sec-bg" id="access">
+  <p class="sec-eyebrow fade-up">ACCESS</p>
+  <h2 class="sec-title fade-up">アクセス</h2>
+
+  <div class="access-wrap fade-up">
+    <div class="access-row">
+      <div class="access-icon-wrap">📍</div>
+      <div>
+        <div class="access-label">住所</div>
+        <div class="access-val">熊本市中央区鍛冶屋町15-1</div>
+      </div>
+    </div>
+    <div class="access-row">
+      <div class="access-icon-wrap">📞</div>
+      <div>
+        <div class="access-label">TEL</div>
+        <div class="access-val"><a href="tel:0926000242" style="color:var(--blue);font-weight:700;">092-600-0242</a></div>
+      </div>
+    </div>
+    <div class="access-row">
+      <div class="access-icon-wrap">🕐</div>
+      <div>
+        <div class="access-label">営業時間</div>
+        <div class="access-val">9:00〜22:00</div>
+        <div class="access-note">定休日：日曜・月曜</div>
+      </div>
+    </div>
+    <div class="access-row">
+      <div class="access-icon-wrap">🚌</div>
+      <div>
+        <div class="access-label">バス</div>
+        <div class="access-val">「商工会議所前（熊本）」バス停</div>
+        <div class="access-note">徒歩4分</div>
+      </div>
+    </div>
+    <div class="access-row">
+      <div class="access-icon-wrap">🅿</div>
+      <div>
+        <div class="access-label">駐車場</div>
+        <div class="access-val">店舗専用駐車場なし</div>
+        <div class="access-note">近隣コインパーキング複数あり（徒歩1分以内）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-area fade-up">
+    <span>📍</span>
+    <span>Googleマップを埋め込み予定</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact" class="form-wrap">
+  <div class="form-title fade-up">無料体験・見学申し込み</div>
+  <p class="form-sub fade-up">フォームは24時間受付中。1営業日以内にご連絡します。</p>
+
+  <a href="tel:0926000242" class="form-tel-btn fade-up">
+    <span>📞</span>
+    <span>TEL. 092-600-0242</span>
+  </a>
+  <div class="form-divider fade-up">または</div>
+
+  <form>
+    <div class="form-group fade-up">
+      <label>お名前<span class="req">必須</span></label>
+      <input type="text" placeholder="山田 太郎">
+    </div>
+    <div class="form-group fade-up">
+      <label>お名前（フリガナ）<span class="req">必須</span></label>
+      <input type="text" placeholder="ヤマダ タロウ">
+    </div>
+    <div class="form-group fade-up">
+      <label>第一候補日</label>
+      <input type="date">
+    </div>
+    <div class="form-group fade-up">
+      <label>第二候補日</label>
+      <input type="date">
+    </div>
+    <div class="form-group fade-up">
+      <label>メールアドレス<span class="req">必須</span></label>
+      <input type="email" placeholder="example@email.com">
+    </div>
+    <div class="form-group fade-up">
+      <label>電話番号<span class="req">必須</span></label>
+      <input type="tel" placeholder="090-0000-0000">
+    </div>
+    <div class="form-group fade-up">
+      <label>お問い合わせ内容</label>
+      <textarea placeholder="ご質問などもお気軽にどうぞ"></textarea>
+    </div>
+    <button type="submit" class="form-submit fade-up">入力内容を確認する</button>
+    <p class="form-note fade-up">送信内容はプライバシーポリシーに基づき適切に管理します。</p>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://chronicle-japan.jp/lp-kumamoto/images/logo.svg" alt="CHRONICLE JAPAN" style="max-width:120px;margin:0 auto 12px;filter:brightness(0) invert(1);opacity:.5;" onerror="this.style.display='none'">
+  <p>熊本店　熊本市中央区鍛冶屋町15-1</p>
+  <p style="margin-top:4px;">© 2025 CHRONICLE JAPAN.</p>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <a href="#contact" class="btn-main">無料体験はこちら</a>
+  <a href="tel:0926000242" class="btn-tel">電話する</a>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+document.querySelector('.form-submit').addEventListener('click', function(e) {
+  e.preventDefault();
+  alert('お申し込みありがとうございます。\n1営業日以内にご連絡いたします。');
+});
+</script>
+</body>
+</html>
