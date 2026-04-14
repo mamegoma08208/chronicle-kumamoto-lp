@@ -14,6 +14,24 @@ echo '<style>
 .contact-tel-box__t2{font-size:13px;color:var(--gray);margin-bottom:10px;}
 .contact-tel-box__t3{display:block;font-size:22px;font-weight:900;color:var(--blue);text-decoration:none;margin:8px 0;}
 .contact-tel-box__t4{font-size:12px;color:var(--gray-light);line-height:1.7;}
-.form-buttons .sec-cta-outline{text-align:center;}
+.form-buttons .sec-cta-outline{
+display:block;
+width:100%;
+padding:18px;
+text-align:center;
+font-size:16px;
+font-weight:700;
+line-height:1.2;
+color:var(--blue);
+background:var(--white);
+border:1.5px solid var(--blue);
+border-radius:var(--radius-pill);
+transition:all .2s ease;
+}
+.form-buttons .sec-cta-outline:hover,
+.form-buttons .sec-cta-outline:focus-visible{
+background:var(--blue-pale);
+outline:none;
+}
 .mail-submit-error{color:#cc3333;font-size:14px;font-weight:700;margin:0 0 14px;line-height:1.6;}
 </style>';

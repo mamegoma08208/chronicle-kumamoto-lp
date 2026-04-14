@@ -5,7 +5,7 @@ declare(strict_types=1);
  * メール・LP 動作設定（本番）
  *
  * 環境変数（任意・サーバの vhost / .env で設定）
- *   CHRONICLE_LP_SEND_MAIL   true で実送信（PHPMailer）。未設定・false は送信スキップ（完了 UI のみ）
+ *   CHRONICLE_LP_SEND_MAIL   false を入れたときだけ送信停止。未設定・true は実送信
  *   CHRONICLE_SMTP_HOST      SMTP ホスト（send_mail 時）
  *   CHRONICLE_SMTP_PORT      例: 587
  *   CHRONICLE_SMTP_USER
@@ -13,10 +13,9 @@ declare(strict_types=1);
  *   CHRONICLE_SMTP_SECURE    tls | ssl | 空
  */
 $sendMailEnv = getenv('CHRONICLE_LP_SEND_MAIL');
-$sendMail    = filter_var(
-    $sendMailEnv === false || $sendMailEnv === '' ? 'false' : $sendMailEnv,
-    FILTER_VALIDATE_BOOLEAN
-);
+$sendMail    = $sendMailEnv === false || $sendMailEnv === ''
+    ? true
+    : filter_var($sendMailEnv, FILTER_VALIDATE_BOOLEAN);
 
 $smtpHost = getenv('CHRONICLE_SMTP_HOST') ?: '';
 $smtpUser = getenv('CHRONICLE_SMTP_USER') ?: '';
