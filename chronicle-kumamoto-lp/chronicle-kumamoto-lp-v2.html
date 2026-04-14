@@ -7,6 +7,7 @@
 <meta name="description" content="熊本市のパーソナルジム、クロニクルジャパン。通い放題で1回あたり約2,200円〜。全室個室・マンツーマン指導。6ヶ月で-8〜10kgの実績多数。初回体験・入会金0円。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://chronicle-japan.jp/lp-kumamoto/js/jquery.datetimepicker.min.css">
 <style>
 :root {
   --blue: #2d2db8;
@@ -897,11 +898,12 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border);
   background: var(--bg);
   aspect-ratio: 16/9;
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
-  gap: 8px;
-  color: var(--gray-light);
-  font-size: 13px;
+}
+.map-embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 /* ─── CONTACT FORM ─── */
@@ -974,6 +976,7 @@ input, select, textarea {
   font-size: 15px;
   background: var(--white);
   color: var(--dark);
+  appearance: none;
   -webkit-appearance: none;
   transition: border-color .2s;
 }
@@ -981,6 +984,14 @@ input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(45,45,184,.1);
+}
+input.input-date {
+  padding-right: 42px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px 18px;
+  cursor: pointer;
 }
 textarea { min-height: 90px; resize: vertical; }
 .form-submit {
@@ -1003,6 +1014,17 @@ textarea { min-height: 90px; resize: vertical; }
   text-align: center;
   margin-top: 12px;
   line-height: 1.8;
+}
+.form-error-global {
+  display: none;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #cc3333;
+  font-weight: 700;
+}
+.form-error-global.is-active {
+  display: block;
 }
 
 /* ─── MID CTA ─── */
@@ -1194,6 +1216,13 @@ footer {
   }
   .mobile-cta-spacer {
     display: none;
+  }
+  .xdsoft_datetimepicker {
+    left: auto !important;
+    right: 20px !important;
+    width: 308px !important;
+    min-width: 308px !important;
+    max-width: 308px !important;
   }
 }
 </style>
@@ -1698,8 +1727,14 @@ footer {
   </div>
 
   <div class="map-area fade-up">
-    <span>📍</span>
-    <span>Googleマップを埋め込み予定</span>
+    <iframe
+      class="map-embed js-map-embed"
+      title="クロニクルジャパン 熊本店の地図"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      data-src="https://www.google.com/maps?q=%E7%86%8A%E6%9C%AC%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%8D%9B%E5%86%B6%E5%B1%8B%E7%94%BA15-1&output=embed">
+    </iframe>
   </div>
 </section>
 
@@ -1714,35 +1749,36 @@ footer {
   </a>
   <div class="form-divider fade-up">または</div>
 
-  <form>
+  <form class="js-form" action="https://chronicle-japan.jp/lp-kumamoto/confirm.php" method="post" novalidate>
     <div class="form-group fade-up">
       <label>お名前<span class="req">必須</span></label>
-      <input type="text" placeholder="山田 太郎">
+      <input type="text" name="お名前" placeholder="山田 太郎" required>
     </div>
     <div class="form-group fade-up">
       <label>お名前（フリガナ）<span class="req">必須</span></label>
-      <input type="text" placeholder="ヤマダ タロウ">
+      <input type="text" name="お名前（フリガナ）" placeholder="ヤマダ タロウ" required>
     </div>
     <div class="form-group fade-up">
-      <label>第一候補日</label>
-      <input type="date">
+      <label>第一候補日<span class="req">必須</span></label>
+      <input id="datetimepicker1" class="input-date" autocomplete="off" placeholder="選択してください" type="text" name="第一候補日" required>
     </div>
     <div class="form-group fade-up">
-      <label>第二候補日</label>
-      <input type="date">
+      <label>第二候補日<span class="req">必須</span></label>
+      <input id="datetimepicker2" class="input-date" autocomplete="off" placeholder="選択してください" type="text" name="第二候補日" required>
     </div>
     <div class="form-group fade-up">
       <label>メールアドレス<span class="req">必須</span></label>
-      <input type="email" placeholder="example@email.com">
+      <input type="email" name="メールアドレス" placeholder="example@email.com" required>
     </div>
     <div class="form-group fade-up">
       <label>電話番号<span class="req">必須</span></label>
-      <input type="tel" placeholder="090-0000-0000">
+      <input type="tel" name="電話番号" placeholder="090-0000-0000" required>
     </div>
     <div class="form-group fade-up">
       <label>お問い合わせ内容</label>
-      <textarea placeholder="ご質問などもお気軽にどうぞ"></textarea>
+      <textarea name="お問い合わせ内容" placeholder="ご質問などもお気軽にどうぞ"></textarea>
     </div>
+    <p class="form-error-global fade-up" role="alert" aria-live="polite">入力に誤りがあります。</p>
     <button type="submit" class="form-submit fade-up">入力内容を確認する</button>
     <p class="form-note fade-up">送信内容はプライバシーポリシーに基づき適切に管理します。</p>
   </form>
@@ -1763,6 +1799,8 @@ footer {
   <a href="tel:0926000242" class="btn-tel">電話する</a>
 </div>
 
+<script src="https://chronicle-japan.jp/lp-kumamoto/js/jquery.js"></script>
+<script src="https://chronicle-japan.jp/lp-kumamoto/js/jquery.datetimepicker.full.js"></script>
 <script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1827,10 +1865,184 @@ syncStickyCtaHeight();
 syncTopHeroState();
 syncFooterOverlapState();
 
-document.querySelector('.form-submit').addEventListener('click', function(e) {
-  e.preventDefault();
-  alert('お申し込みありがとうございます。\n1営業日以内にご連絡いたします。');
-});
+if (window.jQuery && jQuery.datetimepicker) {
+  jQuery.datetimepicker.setLocale('ja');
+
+  const times = [
+    '9:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+    '20:00',
+    '21:00'
+  ];
+
+  const roundWithLimit = (date, minutes) => {
+    const limitHour = 21;
+    if (date.getHours() >= limitHour) {
+      const rounded = new Date(date);
+      rounded.setHours(limitHour, 0, 0, 0);
+      return rounded;
+    }
+
+    const ms = 1000 * 60 * minutes;
+    return new Date(Math.ceil(date.getTime() / ms) * ms);
+  };
+
+  const formatDate = (date) => {
+    const Y = date.getFullYear();
+    const M = (`0${date.getMonth() + 1}`).slice(-2);
+    const D = (`0${date.getDate()}`).slice(-2);
+    const H = (`0${date.getHours()}`).slice(-2);
+    const I = (`0${date.getMinutes()}`).slice(-2);
+    return `${Y}-${M}-${D} ${H}:${I}`;
+  };
+
+  let activeDateInput = null;
+
+  const alignDateTimePickerRight = (inputEl) => {
+    if (!inputEl) return;
+    const $visiblePickers = jQuery('.xdsoft_datetimepicker:visible');
+    const $picker = $visiblePickers.length ? $visiblePickers.last() : jQuery('.xdsoft_datetimepicker').last();
+    if (!$picker.length) return;
+    const rect = inputEl.getBoundingClientRect();
+    const pickerRect = $picker[0].getBoundingClientRect();
+    const datePaneWidth = $picker.find('.xdsoft_datepicker').outerWidth() || 0;
+    const timePaneWidth = $picker.find('.xdsoft_timepicker').outerWidth() || 0;
+    const measuredWidth = pickerRect.width || $picker.outerWidth() || (datePaneWidth + timePaneWidth);
+    const pickerWidth = measuredWidth > 80 ? measuredWidth : 320;
+    const minLeft = window.scrollX + 8;
+    const maxLeft = window.scrollX + window.innerWidth - pickerWidth - 8;
+    const preferredLeft = window.scrollX + rect.right - pickerWidth;
+    const left = Math.max(minLeft, Math.min(preferredLeft, maxLeft));
+    $picker.css({
+      left: `${Math.round(left)}px`,
+      right: 'auto'
+    });
+  };
+
+  const scheduleAlignDateTimePickerRight = ($input) => {
+    const targetEl = ($input && $input.length) ? $input[0] : activeDateInput;
+    window.requestAnimationFrame(() => alignDateTimePickerRight(targetEl));
+    window.setTimeout(() => alignDateTimePickerRight(targetEl), 0);
+    window.setTimeout(() => alignDateTimePickerRight(targetEl), 60);
+  };
+
+  const options = {
+    format: 'Y-m-d H:i',
+    minDate: '+1970/01/03',
+    allowTimes: times,
+    onShow: function (_, $input) {
+      activeDateInput = $input && $input[0] ? $input[0] : activeDateInput;
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onGenerate: function (_, $input) {
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onChangeDateTime: function (_, $input) {
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onSelectTime: function (_, $input) {
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onSelectDate: function (_, $input) {
+      const date = new Date($input.val());
+      const rounded = roundWithLimit(date, 30);
+      const newVal = formatDate(rounded);
+      if ($input.val() !== newVal) {
+        $input.val(newVal);
+      }
+      scheduleAlignDateTimePickerRight($input);
+    }
+  };
+
+  jQuery('#datetimepicker1').datetimepicker(options);
+  jQuery('#datetimepicker2').datetimepicker(options);
+  jQuery('#datetimepicker1, #datetimepicker2').on('focus click', function () {
+    activeDateInput = this;
+    scheduleAlignDateTimePickerRight(jQuery(this));
+  });
+  window.addEventListener('resize', () => scheduleAlignDateTimePickerRight(), { passive: true });
+  window.addEventListener('scroll', () => scheduleAlignDateTimePickerRight(), { passive: true });
+}
+
+const mapEmbedEl = document.querySelector('.js-map-embed');
+if (mapEmbedEl) {
+  const loadMapAsync = () => {
+    if (mapEmbedEl.src) return;
+    const mapUrl = mapEmbedEl.dataset.src;
+    if (!mapUrl) return;
+    window.requestAnimationFrame(() => {
+      mapEmbedEl.src = mapUrl;
+    });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const mapObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        loadMapAsync();
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '200px 0px' });
+    mapObserver.observe(mapEmbedEl);
+  } else {
+    window.setTimeout(loadMapAsync, 0);
+  }
+}
+
+const formEl = document.querySelector('.js-form');
+const formErrorGlobalEl = document.querySelector('.form-error-global');
+if (formEl && formErrorGlobalEl) {
+  const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const phonePattern = /^0\d{9,10}$/;
+  const requiredFieldNames = ['お名前', 'お名前（フリガナ）', '第一候補日', '第二候補日', 'メールアドレス', '電話番号'];
+
+  const showFormError = () => formErrorGlobalEl.classList.add('is-active');
+  const hideFormError = () => formErrorGlobalEl.classList.remove('is-active');
+
+  const hasValidationError = () => {
+    const requiredInvalid = requiredFieldNames.some((fieldName) => {
+      const field = formEl.querySelector(`[name="${fieldName}"]`);
+      return !field || !field.value || !field.value.trim();
+    });
+    if (requiredInvalid) return true;
+
+    const emailValue = (formEl.querySelector('[name="メールアドレス"]')?.value || '').trim();
+    if (!emailPattern.test(emailValue)) return true;
+
+    const phoneRaw = (formEl.querySelector('[name="電話番号"]')?.value || '').trim();
+    const phoneDigits = phoneRaw.replace(/[^\d]/g, '');
+    if (!phonePattern.test(phoneDigits)) return true;
+
+    return false;
+  };
+
+  formEl.addEventListener('submit', (event) => {
+    if (hasValidationError()) {
+      event.preventDefault();
+      showFormError();
+      return;
+    }
+    hideFormError();
+  });
+
+  formEl.querySelectorAll('input, textarea').forEach((inputEl) => {
+    inputEl.addEventListener('input', () => {
+      if (!formErrorGlobalEl.classList.contains('is-active')) return;
+      if (!hasValidationError()) {
+        hideFormError();
+      }
+    });
+  });
+}
 </script>
 </body>
 </html>
