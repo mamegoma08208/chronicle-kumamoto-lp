@@ -1,0 +1,260 @@
+<script src="https://chronicle-japan.jp/lp-kumamoto/js/jquery.js"></script>
+<script src="https://chronicle-japan.jp/lp-kumamoto/js/jquery.datetimepicker.full.js"></script>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+const headerEl = document.querySelector('.header');
+const heroEl = document.querySelector('.hero');
+const stickyCtaEl = document.querySelector('.sticky-cta');
+const footerEl = document.querySelector('footer');
+let isHeroTopPinned = false;
+const syncTopHeroState = () => {
+  if (!headerEl || !heroEl) return;
+  if (window.innerWidth >= 768) {
+    isHeroTopPinned = false;
+    document.body.classList.remove('is-hero-top');
+    return;
+  }
+
+  const headerBottom = headerEl.getBoundingClientRect().bottom;
+  const heroTop = heroEl.getBoundingClientRect().top;
+  const scrollY = Math.max(window.scrollY, 0);
+  const isHeroUnderHeader = heroTop <= (headerBottom + 1);
+  const enterTopState = scrollY <= 1 && isHeroUnderHeader;
+  const keepTopState = scrollY <= 8 && isHeroUnderHeader;
+
+  // 境界付近でのチラつき防止
+  isHeroTopPinned = isHeroTopPinned ? keepTopState : enterTopState;
+  document.body.classList.toggle('is-hero-top', isHeroTopPinned);
+};
+
+const syncFooterOverlapState = () => {
+  if (!stickyCtaEl || !footerEl) return;
+
+  const footerBottom = footerEl.getBoundingClientRect().bottom;
+  const stickyTop = stickyCtaEl.getBoundingClientRect().top;
+  const isFooterOverlap = footerBottom <= (stickyTop + 1);
+  document.body.classList.toggle('is-footer-overlap', isFooterOverlap);
+};
+
+const syncStickyCtaHeight = () => {
+  if (!stickyCtaEl) return;
+  const ctaHeight = Math.ceil(stickyCtaEl.getBoundingClientRect().height);
+  document.documentElement.style.setProperty('--sticky-cta-height', `${ctaHeight}px`);
+};
+
+window.addEventListener('scroll', () => {
+  syncTopHeroState();
+  syncFooterOverlapState();
+}, { passive: true });
+window.addEventListener('resize', () => {
+  syncStickyCtaHeight();
+  syncTopHeroState();
+  syncFooterOverlapState();
+});
+syncStickyCtaHeight();
+syncTopHeroState();
+syncFooterOverlapState();
+
+if (window.jQuery && jQuery.datetimepicker) {
+  jQuery.datetimepicker.setLocale('ja');
+
+  const times = [
+    '9:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+    '20:00',
+    '21:00'
+  ];
+
+  const roundWithLimit = (date, minutes) => {
+    const limitHour = 21;
+    if (date.getHours() >= limitHour) {
+      const rounded = new Date(date);
+      rounded.setHours(limitHour, 0, 0, 0);
+      return rounded;
+    }
+
+    const ms = 1000 * 60 * minutes;
+    return new Date(Math.ceil(date.getTime() / ms) * ms);
+  };
+
+  const formatDate = (date) => {
+    const Y = date.getFullYear();
+    const M = (`0${date.getMonth() + 1}`).slice(-2);
+    const D = (`0${date.getDate()}`).slice(-2);
+    const H = (`0${date.getHours()}`).slice(-2);
+    const I = (`0${date.getMinutes()}`).slice(-2);
+    return `${Y}-${M}-${D} ${H}:${I}`;
+  };
+
+  let activeDateInput = null;
+
+  const alignDateTimePickerRight = (inputEl) => {
+    if (!inputEl) return;
+    const $visiblePickers = jQuery('.xdsoft_datetimepicker:visible');
+    const $picker = $visiblePickers.length ? $visiblePickers.last() : jQuery('.xdsoft_datetimepicker').last();
+    if (!$picker.length) return;
+    const rect = inputEl.getBoundingClientRect();
+    const pickerRect = $picker[0].getBoundingClientRect();
+    const datePaneWidth = $picker.find('.xdsoft_datepicker').outerWidth() || 0;
+    const timePaneWidth = $picker.find('.xdsoft_timepicker').outerWidth() || 0;
+    const measuredWidth = pickerRect.width || $picker.outerWidth() || (datePaneWidth + timePaneWidth);
+    const pickerWidth = measuredWidth > 80 ? measuredWidth : 320;
+    const minLeft = window.scrollX + 8;
+    const maxLeft = window.scrollX + window.innerWidth - pickerWidth - 8;
+    const preferredLeft = window.scrollX + rect.right - pickerWidth;
+    const left = Math.max(minLeft, Math.min(preferredLeft, maxLeft));
+    $picker.css({
+      left: `${Math.round(left)}px`,
+      right: 'auto'
+    });
+  };
+
+  const scheduleAlignDateTimePickerRight = ($input) => {
+    const targetEl = ($input && $input.length) ? $input[0] : activeDateInput;
+    window.requestAnimationFrame(() => alignDateTimePickerRight(targetEl));
+    window.setTimeout(() => alignDateTimePickerRight(targetEl), 0);
+    window.setTimeout(() => alignDateTimePickerRight(targetEl), 60);
+  };
+
+  const options = {
+    format: 'Y-m-d H:i',
+    minDate: '+1970/01/03',
+    allowTimes: times,
+    onShow: function (_, $input) {
+      activeDateInput = $input && $input[0] ? $input[0] : activeDateInput;
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onGenerate: function (_, $input) {
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onChangeDateTime: function (_, $input) {
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onSelectTime: function (_, $input) {
+      scheduleAlignDateTimePickerRight($input);
+    },
+    onSelectDate: function (_, $input) {
+      const date = new Date($input.val());
+      const rounded = roundWithLimit(date, 30);
+      const newVal = formatDate(rounded);
+      if ($input.val() !== newVal) {
+        $input.val(newVal);
+      }
+      scheduleAlignDateTimePickerRight($input);
+    }
+  };
+
+  jQuery('#datetimepicker1').datetimepicker(options);
+  jQuery('#datetimepicker2').datetimepicker(options);
+  jQuery('#datetimepicker1, #datetimepicker2').on('focus click', function () {
+    activeDateInput = this;
+    scheduleAlignDateTimePickerRight(jQuery(this));
+  });
+  window.addEventListener('resize', () => scheduleAlignDateTimePickerRight(), { passive: true });
+  window.addEventListener('scroll', () => scheduleAlignDateTimePickerRight(), { passive: true });
+}
+
+const mapEmbedEl = document.querySelector('.js-map-embed');
+if (mapEmbedEl) {
+  const loadMapAsync = () => {
+    if (mapEmbedEl.src) return;
+    const mapUrl = mapEmbedEl.dataset.src;
+    if (!mapUrl) return;
+    window.requestAnimationFrame(() => {
+      mapEmbedEl.src = mapUrl;
+    });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const mapObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        loadMapAsync();
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '200px 0px' });
+    mapObserver.observe(mapEmbedEl);
+  } else {
+    window.setTimeout(loadMapAsync, 0);
+  }
+}
+
+const formEl = document.querySelector('.js-form');
+const formErrorGlobalEl = document.querySelector('.form-error-global');
+if (formEl && formErrorGlobalEl) {
+  const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const phonePattern = /^0\d{9,10}$/;
+  const requiredFieldNames = ['お名前', 'お名前（フリガナ）', '第一候補日', '第二候補日', 'メールアドレス', '電話番号'];
+
+  const showFormError = () => formErrorGlobalEl.classList.add('is-active');
+  const hideFormError = () => formErrorGlobalEl.classList.remove('is-active');
+
+  const hasValidationError = () => {
+    const requiredInvalid = requiredFieldNames.some((fieldName) => {
+      const field = formEl.querySelector(`[name="${fieldName}"]`);
+      return !field || !field.value || !field.value.trim();
+    });
+    if (requiredInvalid) return true;
+
+    const emailValue = (formEl.querySelector('[name="メールアドレス"]')?.value || '').trim();
+    if (!emailPattern.test(emailValue)) return true;
+
+    const phoneRaw = (formEl.querySelector('[name="電話番号"]')?.value || '').trim();
+    const phoneDigits = phoneRaw.replace(/[^\d]/g, '');
+    if (!phonePattern.test(phoneDigits)) return true;
+
+    return false;
+  };
+
+  formEl.addEventListener('submit', (event) => {
+    if (hasValidationError()) {
+      event.preventDefault();
+      showFormError();
+      return;
+    }
+    hideFormError();
+  });
+
+  formEl.querySelectorAll('input, textarea').forEach((inputEl) => {
+    inputEl.addEventListener('input', () => {
+      if (!formErrorGlobalEl.classList.contains('is-active')) return;
+      if (!hasValidationError()) {
+        hideFormError();
+      }
+    });
+  });
+}
+
+(function () {
+  const isTelMobile = () => window.matchMedia('(max-width: 767px)').matches;
+  const canonical = '0926000242';
+  document.querySelectorAll('a[href^="tel:"]').forEach((a) => {
+    a.setAttribute('href', 'tel:' + canonical);
+    a.addEventListener('click', (e) => {
+      if (!isTelMobile()) {
+        e.preventDefault();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
